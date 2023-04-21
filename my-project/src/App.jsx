@@ -27,7 +27,7 @@ const App = () => {
       <main className="container mx-auto mt-8 px-4 ">
         <TodoCreate />
 
-        <TodoList/>
+        <TodoList todos={todos}/>
         
         <TodoComputed/>
 
