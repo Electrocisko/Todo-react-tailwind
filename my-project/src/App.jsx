@@ -11,7 +11,7 @@ const initialState= [
   {id:2,  title: "Funca ", completed: false},
   {id:3,  title: "Funca si??", completed: true},
   {id:4,  title: "Funca no??", completed: false},
-  {id:5,  title: "Funca fuck??", completed: false},
+  {id:5,  title: "Funca fuck??", completed: false}
 ]
 
 
