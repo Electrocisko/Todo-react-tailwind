@@ -1,10 +1,25 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import TodoComputed from "./components/TodoComputed";
 import TodoCreate from "./components/TodoCreate";
 import TodoFilter from "./components/TodoFilter";
 import TodoList from "./components/TodoList";
+ 
+
+const initialState= [
+  {id:1,  title: "Funca esto??", completed: false},
+  {id:2,  title: "Funca ", completed: false},
+  {id:3,  title: "Funca si??", completed: true},
+  {id:4,  title: "Funca no??", completed: false},
+  {id:5,  title: "Funca fuck??", completed: false},
+]
+
+
 
 const App = () => {
+
+  const [todos, setTodos] = useState(initialState);
+
   return (
     <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat">
       <Header />
