@@ -18,8 +18,9 @@ const App = () => {
 
   const [todos, setTodos] = useState(initialState);
 
-  const createTodo = (title) => {
+  const [filter, setFilter] = useState("all");
 
+  const createTodo = (title) => {
     const newTodo = {
       id: Date.now(),
       title: title,
@@ -43,7 +44,6 @@ const App = () => {
     setTodos(list)
   }
 
-
   const computedItemsLeft = () => {
     return todos.filter((todo) => !todo.completed).length;
   }
@@ -53,18 +53,32 @@ const App = () => {
     setTodos(list)
   }
 
+  const filterTodo = () => {
+    if (filter === "active") {
+      return ( todos.filter((todo) =>  todo.completed === false))
+    }
+    if (filter === "completed") {
+      return ( todos.filter((todo) =>  todo.completed === true))
+    }
+   return todos;
+  }
+
+  const changeFilter = (state) => {
+   setFilter(state)
+  }
+
   return (
-    <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat">
+    <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] ">
       <Header />
 
-      <main className="container mx-auto mt-8 px-4 ">
+      <main className="container mx-auto mt-8 px-4  dark:bg-gray-900">
         <TodoCreate createTodo={createTodo} />
 
-        <TodoList todos={todos} updatedTodo={updatedTodo} removeTodo={removeTodo}/>
+        <TodoList todos={ filterTodo(todos)} updatedTodo={updatedTodo} removeTodo={removeTodo}/>
         
         <TodoComputed computedItemsLeft={computedItemsLeft()} clearComplete={clearComplete}/>
 
-        <TodoFilter />
+        <TodoFilter changeFilter={changeFilter}  filter={filter}/>
     
       </main>
 
